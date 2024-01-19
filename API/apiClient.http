@@ -1,0 +1,5 @@
+@baseUrl = "http://localhost:3000/"
+
+# HOME SECTION
+GET http://localhost:3000/
+
