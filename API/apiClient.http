@@ -1,5 +1,12 @@
 @baseUrl = "http://localhost:3000/"
 
-# HOME SECTION
-GET http://localhost:3000/
+# Product Routes
+## GET http://localhost:3000/
+
+
+# User Routes
+## GET
+
+# POST
+POST http://localhost:3000/users/
 

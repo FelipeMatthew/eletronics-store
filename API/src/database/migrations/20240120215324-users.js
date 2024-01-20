@@ -2,10 +2,11 @@
 
 // npx sequelize migration:create --name=products
 // npx sequelize db:migrate
+// npx sequelize db:migrate:undo - desfazer a ultima action
 
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('products', {
+    await queryInterface.createTable('users', {
       id: {
         type: Sequelize.INTEGER,
         allowNull: false,
@@ -16,31 +17,12 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false,
       },
-      brand: {
+      email: {
         type: Sequelize.STRING,
         allowNull: false,
+        unique: true,
       },
-      model: {
-        type: Sequelize.STRING,
-        allowNull: false,
-      },
-      price: {
-        type: Sequelize.FLOAT,
-        allowNull: false,
-      },
-      description: {
-        type: Sequelize.STRING,
-        allowNull: false,
-      },
-      color: {
-        type: Sequelize.STRING,
-        allowNull: false,
-      },
-      weight: {
-        type: Sequelize.FLOAT,
-        allowNull: false,
-      },
-      dimensions: {
+      password_hash: {
         type: Sequelize.STRING,
         allowNull: false,
       },
@@ -57,6 +39,6 @@ module.exports = {
   },
 
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('products');
+    await queryInterface.dropTable('users');
   },
 };

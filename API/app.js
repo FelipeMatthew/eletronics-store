@@ -5,14 +5,16 @@ dotenv.config();
 // index.js
 import './src/database';
 import express from 'express';
+
+// Routes
 import homeRoutes from './src/routes/home';
+import userRoutes from './src/routes/user';
 
 class App {
   constructor() {
     this.app = express();
     this.middlewares();
     this.routes();
-    this.port = 3000;
   }
 
   middlewares() {
@@ -22,6 +24,7 @@ class App {
 
   routes() {
     this.app.use('/', homeRoutes);
+    this.app.use('/users/', userRoutes);
   }
 }
 

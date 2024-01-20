@@ -28,5 +28,8 @@ module.exports = {
     'class-methods-use-this': 'off',
     'import/prefer-default-export': 'off',
     'import/first': 'off',
+    'no-unused-vars': 'off',
+    'no-param-reassign': 'off',
+    ''
   },
 };
