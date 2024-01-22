@@ -11,7 +11,7 @@ export default class User extends Model {
         validate: {
           len: {
             args: [3, 255],
-            msg: 'Campo nome deve ter entre 3 e 255 caracteres',
+            msg: 'Name needs to have between 3 - 255 letters',
           },
         },
       },
@@ -19,11 +19,11 @@ export default class User extends Model {
         type: Sequelize.STRING,
         defaultValue: '',
         unique: {
-          msg: 'Email já existe',
+          msg: 'Email already exist',
         },
         validate: {
           isEmail: {
-            msg: 'Email inválido',
+            msg: 'Email is invalid',
           },
 
         },
@@ -38,7 +38,7 @@ export default class User extends Model {
         validate: {
           len: {
             args: [6, 50],
-            msg: 'A senha precisa ter entre 6 e 50 caracteres',
+            msg: 'Pass needs to have between 3 - 255 letters',
           },
         },
       },
@@ -49,7 +49,9 @@ export default class User extends Model {
     // Antes de salvar a request ele vai fazer a função
     this.addHook('beforeSave', async (user) => {
       // Pega e senha passada e faz hash
-      user.password_hash = await bcryptjs.hash(user.password, 8);
+      if(user.password) {
+        user.password_hash = await bcryptjs.hash(user.password, 8);
+      }
     });
 
     return this;
