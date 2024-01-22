@@ -5,7 +5,7 @@ import databaseConfig from '../config/database';
 import User from '../models/User';
 import Product from '../models/Product';
 
-const models = [User, Product];
+const models = [Product, User];
 
 const connection = new Sequelize(databaseConfig);
 
