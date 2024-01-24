@@ -9,3 +9,4 @@ sequelize cli
 mariadb
 mysql workbench
 bcrypt js
+JWT
