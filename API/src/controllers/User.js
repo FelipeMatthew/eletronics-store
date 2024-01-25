@@ -7,7 +7,12 @@ class UserController {
   async create(req, res) {
     try {
       const newUser = await User.create(req.body);
-      return res.status(SUCCESS).json(newUser);
+
+
+      const { id, email, name } = newUser
+
+      return res.json({ id, email, name, msg: 'user created successfully' });
+
     } catch (err) {
       console.log(err)
       return res.status(BAD_REQUEST).json({
@@ -19,7 +24,9 @@ class UserController {
   // List all
   async listAll(req, res) {
     try {
-      const showUsers = await User.findAll();
+      const showUsers = await User.findAll({
+        attributes: ['id', 'name', 'email']
+      });
 
       if (!showUsers) {
         return res.status(BAD_REQUEST).json({
@@ -52,13 +59,8 @@ class UserController {
   // Update
   async update(req, res) {
     try {
-      if(!req.params.id) {
-        return res.status(BAD_REQUEST).json({
-          error: "User not founded"
-        })
-      }
-
-      const user = await User.findByPk(req.params.id);
+      // Vai passar no middleware e com o token ele já vai saber quem é o user id
+      const user = await User.findByPk(req.userId);
 
       if(!user) {
         return res.status(BAD_REQUEST).json({
@@ -68,7 +70,9 @@ class UserController {
 
       const newData = await user.update(req.body)
 
-      return res.json(newData);
+      const { id, email, name } = newData
+
+      return res.json({ id, email, name });
 
     } catch (e) {
       return res.status(BAD_REQUEST).json({
@@ -80,13 +84,7 @@ class UserController {
   // Delete
   async delete(req, res) {
     try {
-      if(!req.params.id) {
-        return res.status(BAD_REQUEST).json({
-          error: "User not founded"
-        })
-      }
-
-      const user = await User.findByPk(req.params.id);
+      const user = await User.findByPk(req.userId);
 
       if(!user) {
         return res.status(BAD_REQUEST).json({

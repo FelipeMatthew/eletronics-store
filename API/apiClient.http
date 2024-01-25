@@ -1,8 +1,5 @@
 # @baseUrl = "http://localhost:3000/"
 
-# Product Routes
-## GET http://localhost:3000/
-
 
 # User Routes
 # LIST ALL
@@ -33,3 +30,7 @@
 
 # DELETE
 # DELETE  http://localhost:3000/users/1
+
+
+# Product Routes
+## GET http://localhost:3000/
