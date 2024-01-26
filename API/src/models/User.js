@@ -32,6 +32,7 @@ export default class User extends Model {
         type: Sequelize.STRING,
         defaultValue: '',
       },
+      // Só vai aparecer no sistema virtualmente, nao vai ser um campo required
       password: {
         type: Sequelize.VIRTUAL,
         defaultValue: '',

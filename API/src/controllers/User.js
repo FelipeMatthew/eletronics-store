@@ -14,7 +14,6 @@ class UserController {
       return res.json({ id, email, name, msg: 'user created successfully' });
 
     } catch (err) {
-      console.log(err)
       return res.status(BAD_REQUEST).json({
         errors: err.errors.map((e) => e.message)
       });

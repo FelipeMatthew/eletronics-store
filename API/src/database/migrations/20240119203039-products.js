@@ -2,6 +2,7 @@
 
 // npx sequelize migration:create --name=products
 // npx sequelize db:migrate
+// npx sequelize db:migrate:undo - desfazer a ultima action
 
 module.exports = {
   async up(queryInterface, Sequelize) {
