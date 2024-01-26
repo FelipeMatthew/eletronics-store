@@ -10,7 +10,8 @@ import express from 'express';
 import homeRoutes from './src/routes/home';
 import userRoutes from './src/routes/user';
 import tokenRoutes from './src/routes/token';
-import productRoutes from './src/routes/product'
+import productRoutes from './src/routes/product';
+import pictureRoutes from './src/routes/picture';
 
 
 class App {
@@ -30,6 +31,7 @@ class App {
     this.app.use('/users/', userRoutes);
     this.app.use('/tokens/', tokenRoutes);
     this.app.use('/products/', productRoutes);
+    this.app.use('/pictures/', pictureRoutes);
   }
 }
 
