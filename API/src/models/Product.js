@@ -1,5 +1,7 @@
 import Sequelize, { Model } from 'sequelize';
 
+import ProductPicture from '../models/ProductPicture'
+
 export default class Product extends Model {
   static init(sequelize) {
     super.init({
@@ -55,6 +57,9 @@ export default class Product extends Model {
       sequelize,
     });
     return this;
+  }
+  static associate(models) {
+    this.hasMany(models.ProductPicture, { foreignKey: 'product_id' })
   }
 }
 

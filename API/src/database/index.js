@@ -4,10 +4,10 @@ import databaseConfig from '../config/database';
 // Models
 import User from '../models/User';
 import Product from '../models/Product';
-import ProductPictures from '../models/ProductPicture';
+import ProductPicture from '../models/ProductPicture';
 
 
-const models = [Product, User, ProductPictures];
+const models = [Product, User, ProductPicture];
 
 const connection = new Sequelize(databaseConfig);
 

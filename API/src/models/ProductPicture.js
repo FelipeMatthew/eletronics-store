@@ -1,4 +1,5 @@
 import Sequelize, { Model } from 'sequelize';
+import appConfig from '../config/appConfig';
 
 import Product from './Product';
 
@@ -23,6 +24,12 @@ export default class ProductPicture extends Model {
           },
         }
       },
+      url: {
+        type: Sequelize.VIRTUAL,
+        get() {
+          return `${appConfig.url}/images/${this.getDataValue('filename')}`
+        },
+      },
     }, {
       sequelize,
       tableName: 'product-pictures'
@@ -30,9 +37,6 @@ export default class ProductPicture extends Model {
     return this;
   }
 
-  static associate(models) {
-    this.belongsTo(models.Product, { foreignKey: 'product_id' })
-  }
 }
 
 //
