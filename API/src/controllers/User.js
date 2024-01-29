@@ -1,5 +1,7 @@
 import { SUCCESS, BAD_REQUEST } from '../config/status';
 
+import UsersPicture from '../models/UsersPicture';
+
 import User from '../models/User';
 
 class UserController {
@@ -24,7 +26,17 @@ class UserController {
   async listAll(req, res) {
     try {
       const showUsers = await User.findAll({
-        attributes: ['id', 'name', 'email']
+        attributes: [
+          "id",
+          "name",
+          "email",
+
+        ],
+        order: [['id', 'DESC'], [UsersPicture, 'id', 'DESC']],
+        include: {
+          model: UsersPicture,
+          attributes: ['filename', 'url']
+        }
       });
 
       if (!showUsers) {

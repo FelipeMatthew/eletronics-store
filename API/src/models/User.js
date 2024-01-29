@@ -1,6 +1,8 @@
 import Sequelize, { Model } from 'sequelize';
 import bcryptjs from 'bcryptjs';
 
+import UsersPicture from '../models/UsersPicture';
+
 // Sequelize usa a biblioteca do validator
 export default class User extends Model {
   static init(sequelize) {
@@ -60,6 +62,10 @@ export default class User extends Model {
 
   checkPassword(password) {
     return bcryptjs.compare(password, this.password_hash);
+  }
+
+  static associate(models) {
+    this.hasMany(models.UsersPicture, { foreignKey: 'user_id' })
   }
 }
 

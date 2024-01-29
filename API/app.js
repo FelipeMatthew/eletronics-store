@@ -12,8 +12,8 @@ import homeRoutes from './src/routes/home';
 import userRoutes from './src/routes/user';
 import tokenRoutes from './src/routes/token';
 import productRoutes from './src/routes/product';
-import pictureRoutes from './src/routes/picture';
-
+import productPictureRoutes from './src/routes/productPicture';
+import usersPictureRoutes from './src/routes/usersPicture';
 
 class App {
   constructor() {
@@ -33,7 +33,9 @@ class App {
     this.app.use('/users/', userRoutes);
     this.app.use('/tokens/', tokenRoutes);
     this.app.use('/products/', productRoutes);
-    this.app.use('/pictures/', pictureRoutes);
+    this.app.use('/productPictures/', productPictureRoutes);
+    this.app.use('/usersPictures/', usersPictureRoutes);
+
   }
 }
 

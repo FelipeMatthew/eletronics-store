@@ -5,9 +5,10 @@ import databaseConfig from '../config/database';
 import User from '../models/User';
 import Product from '../models/Product';
 import ProductPicture from '../models/ProductPicture';
+import UsersPicture from '../models/UsersPicture';
 
 
-const models = [Product, User, ProductPicture];
+const models = [Product, User, ProductPicture, UsersPicture];
 
 const connection = new Sequelize(databaseConfig);
 

@@ -4,11 +4,11 @@ import ProductPicture from '../models/ProductPicture'
 
 import multer from 'multer';
 
-import multerConfig from '../config/multer'
+import { multerProduct } from '../config/multer'
 import ProductPicture from '../models/ProductPicture';
 
-const upload = multer(multerConfig).single('file')
-class PictureController {
+const upload = multer(multerProduct).single('file')
+class ProductPictureController {
    create(req, res) {
     return upload(req, res, async (err) => {
       if(err) {
@@ -33,4 +33,4 @@ class PictureController {
   }
 }
 
-export default new PictureController();
+export default new ProductPictureController();
