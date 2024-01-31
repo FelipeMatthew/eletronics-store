@@ -4,16 +4,19 @@ import { resolve } from 'path'
 dotenv.config();
 
 // index.js
-import './src/database';
+import './database';
+
 import express from 'express';
+import cors from 'cors'
+import helmet from 'helmet'
 
 // Routes
-import homeRoutes from './src/routes/home';
-import userRoutes from './src/routes/user';
-import tokenRoutes from './src/routes/token';
-import productRoutes from './src/routes/product';
-import productPictureRoutes from './src/routes/productPicture';
-import usersPictureRoutes from './src/routes/usersPicture';
+import homeRoutes from './routes/home';
+import userRoutes from './routes/user';
+import tokenRoutes from './routes/token';
+import productRoutes from './routes/product';
+import productPictureRoutes from './routes/productPicture';
+import usersPictureRoutes from './routes/usersPicture';
 
 class App {
   constructor() {
@@ -23,9 +26,12 @@ class App {
   }
 
   middlewares() {
+    this.app.use(cors());
+    this.app.use(helmet())
     this.app.use(express.urlencoded({ extended: true }));
     this.app.use(express.json());
     this.app.use(express.static(resolve(__dirname, 'uploads')));
+
   }
 
   routes() {
