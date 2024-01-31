@@ -59,14 +59,13 @@ export default class User extends Model {
 
     return this;
   }
-
-  checkPassword(password) {
-    return bcryptjs.compare(password, this.password_hash);
-  }
-
   static associate(models) {
     this.hasMany(models.UsersPicture, { foreignKey: 'user_id' })
   }
+  checkPassword(password) {
+    return bcryptjs.compare(password, this.password_hash);
+  }
 }
+
 
 //

@@ -6,7 +6,8 @@ import multer from 'multer';
 
 import { multerUser } from '../config/multer'
 import UserPicture from '../models/UsersPicture'
-const upload = multer(multerUser).single('file')
+
+const upload = multer(multerUser).single('file');
 class UsersPictureController {
    create(req, res) {
     return upload(req, res, async (err) => {
@@ -16,13 +17,13 @@ class UsersPictureController {
 
       try {
         const { originalname, filename } = req.file;
-        const { users_id } = req.body;
+        const { user_id } = await req.body;
 
-        if(!users_id) {
+        if(!user_id) {
           return res.status(BAD_REQUEST).json({ errors: 'User not founded'  })
         }
 
-        const picture = await UserPicture.create({ originalname, filename, users_id })
+        const picture = await UserPicture.create({ originalname, filename, user_id })
 
         return res.status(SUCCESS).json(picture);
       }catch(err) {
